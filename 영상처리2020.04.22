@@ -1,0 +1,15 @@
+import numpy as np
+import matplotlib.image as img
+import matplotlib.pyplot as plt
+
+lenna1=img.imread('lenna.PNG')
+lenna=lenna1[:,:,0]
+print(lenna.shape)
+mask_size=5
+blu = np.ones((5,5)) / 5**2
+out=np.copy(lenna)
+for i in range(lenna.shape[0]-mask_size+1):
+    for j in range(lenna.shape[1]-mask_size+1):
+        out[i,j]=np.sum(blu*lenna[i:i+mask_size,j:j+mask_size])
+plt.imshow(out,cmap='gray')
+plt.show()
