@@ -1,0 +1,9 @@
+def blurring(image,size):
+    mask1=np.ones((size,size)) / size**2
+    guard=int((size-1)/2)
+    out=np.copy(image)
+    for i in range(guard,image.shape[0]-guard):
+        for j in range(guard,image.shape[1]-guard):
+            out[i,j]=np.sum(mask1*image[i-guard:i+guard+1,j-guard:j+guard+1])
+    return out
+blurring(이미지, filter_size)
